@@ -4,12 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class SingleLinkedListTest 
-{
+public class SingleLinkedListTest {
 
     @Test
-    public void testEmptyList()
-    {
+    public void testEmptyList() {
         SingleLinkedList list = new SingleLinkedList();
         assertEquals(true, list.isEmpty());
     }
@@ -17,23 +15,24 @@ public class SingleLinkedListTest
     @Test
     public void testListSize() {
 
-    }   
-    
-    @Test
-    public void testListPush_back() {}
+    }
 
-    @Test 
+    @Test
+    public void testListPush_back() {
+    }
+
+    @Test
     public void testListPush_front() {
 
     }
 
-    @Test 
+    @Test
     public void testListPop_back() {
 
     }
 
     @Test
     public void testListPop_front() {
-        
+
     }
 }

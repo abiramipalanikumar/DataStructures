@@ -1,29 +1,24 @@
 package dsa;
 
-class Node
-{
+class Node {
     int data;
     Node next;
 
-    Node(int data)
-    {
+    Node(int data) {
         this.data = data;
         this.next = null;
     }
 
-    public void setNext(Node node)
-    {
+    public void setNext(Node node) {
         this.next = node;
     }
 }
 
-public class SingleLinkedList
-{
+public class SingleLinkedList {
 
     Node head;
 
-    SingleLinkedList()
-    {
+    SingleLinkedList() {
         head = null;
     }
 
@@ -43,13 +38,11 @@ public class SingleLinkedList
         return 0;
     }
 
-    public int length()
-    {
+    public int length() {
         return 0;
     }
 
-    public boolean isEmpty()
-    {
-       return head == null;
+    public boolean isEmpty() {
+        return head == null;
     }
 }
