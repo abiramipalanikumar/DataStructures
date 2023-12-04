@@ -31,6 +31,25 @@ public class ArrayList {
         list[index++] = value;
     }
 
+    public int remove(int index) throws ArrayIndexOutOfBoundsException
+    {
+        if(index < 0 || index >= this.index)
+        {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
+        int temp = this.get(index);
+
+        this.index -= 1;
+
+        for(int i=index; i < this.index; i++)
+        {
+            list[i] = list[i+1];
+        }
+
+        return temp;
+    }
+
     public int get(int index) throws ArrayIndexOutOfBoundsException
     {
         if(index < 0 || index >= this.index)
@@ -38,6 +57,19 @@ public class ArrayList {
             throw new ArrayIndexOutOfBoundsException();
         }
         return list[index];
+    }
+
+    public boolean contains(int value) 
+    {
+        for(int i = 0; i < this.index; i++)
+        {
+            if(this.get(i) == value)
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     public int length()
