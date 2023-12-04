@@ -1,14 +1,14 @@
 package dsa;
 
-public class ArrayList {
-    int[] list;
+public class ArrayList<T> {
+    T[] list;
     int index, size;
 
     public ArrayList(int size)
     {
         this.size = size;
         this.index = 0;
-        this.list = new int[size];
+        this.list = (T[]) new Object[size];
     }
 
     public ArrayList()
@@ -16,12 +16,12 @@ public class ArrayList {
         this(50);
     }
 
-    public void add(int value)
+    public void add(T value)
     {
         if(index == size)
         {
             this.size = this.size + 50;
-            int[] newList = new int[size];
+            T[] newList = (T[]) new Object[size];
             for(int i = 0;i < index; i++)
             {
                 newList[i] = list[i];
@@ -31,14 +31,14 @@ public class ArrayList {
         list[index++] = value;
     }
 
-    public int remove(int index) throws ArrayIndexOutOfBoundsException
+    public T remove(int index) throws ArrayIndexOutOfBoundsException
     {
         if(index < 0 || index >= this.index)
         {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        int temp = this.get(index);
+        T temp = this.get(index);
 
         this.index -= 1;
 
@@ -50,7 +50,7 @@ public class ArrayList {
         return temp;
     }
 
-    public int get(int index) throws ArrayIndexOutOfBoundsException
+    public T get(int index) throws ArrayIndexOutOfBoundsException
     {
         if(index < 0 || index >= this.index)
         {
@@ -59,7 +59,7 @@ public class ArrayList {
         return list[index];
     }
 
-    public boolean contains(int value) 
+    public boolean contains(T value) 
     {
         for(int i = 0; i < this.index; i++)
         {
@@ -68,7 +68,7 @@ public class ArrayList {
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -80,12 +80,5 @@ public class ArrayList {
     public int size()
     {
         return this.size;
-    }
-
-    public static void main(String[] args)
-    {
-        ArrayList list = new ArrayList();
-        list.add(1);
-        System.out.println(list.size());
     }
 }

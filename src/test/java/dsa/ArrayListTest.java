@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ArrayListTest {
     @Test
     public void shouldReturnArrayDefualtSize() {
-        ArrayList array = new ArrayList();
+        ArrayList<Integer> array = new ArrayList<Integer>();
         assertEquals(50, array.size());        
     }
 
     @Test
     public void insertArrayValues()
     {
-        ArrayList array = new ArrayList();
+         ArrayList<Integer> array = new ArrayList<Integer>();;
         for(int i = 0; i < 100; i++)
         {
             array.add(i);
@@ -25,7 +25,7 @@ public class ArrayListTest {
 
         for(int i = 0; i < 100; i++)
         {
-            assertEquals(i, array.get(i));
+            assertEquals((Integer)i, array.get(i));
         }
 
         assertEquals(100, array.size());
@@ -35,7 +35,7 @@ public class ArrayListTest {
     @Test
     public void checkArraySize()
     {
-        ArrayList array = new ArrayList();
+         ArrayList<Integer> array = new ArrayList<Integer>();;
         for(int i = 0; i < 120; i++)
         {
             array.add(i);
@@ -43,7 +43,7 @@ public class ArrayListTest {
 
         for(int i = 0; i < 120; i++)
         {
-            assertEquals(i, array.get(i));
+            assertEquals((Integer)i, array.get(i));
         }
 
         assertEquals(150, array.size());
@@ -53,7 +53,7 @@ public class ArrayListTest {
     @Test
     public void checkArrayIndexOutOfBoundary()
     {
-        ArrayList array = new ArrayList();
+         ArrayList<Integer> array = new ArrayList<Integer>();;
         for(int i = 0; i < 120; i++)
         {
             array.add(i);
@@ -70,7 +70,7 @@ public class ArrayListTest {
     @Test
     public void removeArrayOutOfBoudsException()
     {
-        ArrayList array = new ArrayList();
+         ArrayList<Integer> array = new ArrayList<Integer>();;
         
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
             array.remove(0);
@@ -90,7 +90,7 @@ public class ArrayListTest {
     @Test
     public void removeArray()
     {
-        ArrayList array = new ArrayList();
+         ArrayList<Integer> array = new ArrayList<Integer>();;
         
        
         for(int i = 0; i < 120; i++)
@@ -100,7 +100,7 @@ public class ArrayListTest {
 
         for(int i = 0; i < 120; i++)
         {
-           assertEquals(i, array.remove(0));
+           assertEquals((Integer)i, array.remove(0));
         }
 
         for(int i = 0; i < 120; i++)
@@ -110,7 +110,7 @@ public class ArrayListTest {
 
         for(int i = 100; i >= 0; i--)
         {
-           assertEquals(i, array.remove(i));
+           assertEquals((Integer)i, array.remove(i));
         }
 
     }
@@ -118,7 +118,7 @@ public class ArrayListTest {
     @Test
     public void contains()
     {
-        ArrayList array = new ArrayList();
+         ArrayList<Integer> array = new ArrayList<Integer>();;
         
        
         for(int i = 0; i < 120; i++)
