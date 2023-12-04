@@ -24,10 +24,23 @@ public class SingleLinkedList {
 
     public void push_back(int data) {
 
+        if (head == null) {
+            head = new Node(data);
+        } else {
+            Node tempNode = head;
+            while (tempNode != null && tempNode.next != null) {
+                tempNode = tempNode.next;
+            }
+            Node newNode = new Node(data);
+            tempNode.next = newNode;
+        }
+
     }
 
     public void push_front(int data) {
-
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
     }
 
     public int pop_back() {
@@ -39,7 +52,13 @@ public class SingleLinkedList {
     }
 
     public int length() {
-        return 0;
+        Node tempNode = head;
+        int length = 0;
+        while (tempNode != null) {
+            length++;
+            tempNode = tempNode.next;
+        }
+        return length;
     }
 
     public boolean isEmpty() {
