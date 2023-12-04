@@ -15,8 +15,15 @@ public class SingleLinkedListTest
     }
 
     @Test
-    public void testListSize() {
+    public void testListSize() 
+    {
+        SingleLinkedList list = new SingleLinkedList();
 
+        for(int i = 0; i < 10; i++)
+        {
+            list.push_back(i);
+        }
+        assertEquals(10, list.length());
     }   
     
     @Test
@@ -34,6 +41,6 @@ public class SingleLinkedListTest
 
     @Test
     public void testListPop_front() {
-        
+
     }
 }
