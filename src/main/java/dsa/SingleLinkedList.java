@@ -23,7 +23,6 @@ public class SingleLinkedList {
     }
 
     public void push_back(int data) {
-
         if (this.isEmpty()) {
             head = new Node(data);
         } else {
@@ -34,7 +33,6 @@ public class SingleLinkedList {
             Node newNode = new Node(data);
             tempNode.next = newNode;
         }
-
     }
 
     public void push_front(int data) {
@@ -76,20 +74,17 @@ public class SingleLinkedList {
     }
 
     public ArrayList<Integer> toArrayList() {
-
         ArrayList<Integer> list = new ArrayList<Integer>();
-        if (!this.isEmpty()) {
-            Node temp = head;
-            while (temp != null) {
-                list.add(temp.data);
-                temp = temp.next;
-            }
+        Node temp = this.head;
+        while (temp != null) {
+            list.add(temp.data);
+            temp = temp.next;
         }
         return list;
     }
 
     public int length() {
-        Node tempNode = head;
+        Node tempNode = this.head;
         int length = 0;
         while (tempNode != null) {
             length++;
