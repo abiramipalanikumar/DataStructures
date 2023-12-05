@@ -74,6 +74,26 @@ public class SingleLinkedList {
         return 0;
     }
 
+    public int get_head() {
+        if (head != null) {
+            return head.data;
+        }
+        return 0;
+    }
+
+    public ArrayList<Integer> toArrayList() {
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        if (head != null) {
+            Node temp = head;
+            while (temp != null) {
+                list.add(temp.data);
+                temp = temp.next;
+            }
+        }
+        return list;
+    }
+
     public int length() {
         Node tempNode = head;
         int length = 0;
