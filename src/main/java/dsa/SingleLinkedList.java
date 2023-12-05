@@ -44,10 +44,33 @@ public class SingleLinkedList {
     }
 
     public int pop_back() {
+        if (head != null) {
+            Node temp = head, prev = null;
+            while (temp.next != null) {
+                prev = temp;
+                temp = temp.next;
+            }
+            if (prev != null) {
+                prev.next = null;
+                return temp.data;
+            }
+        }
         return 0;
     }
 
     public int pop_front() {
+        if (head != null) {
+            Node temp = head;
+            head = temp.next;
+            return temp.data;
+        }
+        return 0;
+    }
+
+    public int get_head() {
+        if (head != null) {
+            return head.data;
+        }
         return 0;
     }
 
