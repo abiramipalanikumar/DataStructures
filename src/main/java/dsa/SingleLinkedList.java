@@ -24,7 +24,7 @@ public class SingleLinkedList {
 
     public void push_back(int data) {
 
-        if (head == null) {
+        if (this.isEmpty()) {
             head = new Node(data);
         } else {
             Node tempNode = head;
@@ -43,48 +43,42 @@ public class SingleLinkedList {
         head = newNode;
     }
 
-    public int pop_back() {
-        if (head != null) {
-            Node temp = head, prev = null;
-            while (temp.next != null) {
-                prev = temp;
-                temp = temp.next;
-            }
-            if (prev != null) {
-                prev.next = null;
-                return temp.data;
-            }
+    public int pop_back() throws NullPointerException {
+        if (this.isEmpty()) {
+            throw new NullPointerException();
         }
-        return 0;
+
+        Node temp = this.head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        int tempVal = temp.data;
+        temp.next = null;
+        return tempVal;
+
     }
 
-    public int pop_front() {
-        if (head != null) {
+    public int pop_front() throws NullPointerException {
+        if (this.isEmpty()) {
+            throw new NullPointerException();
+        } else {
             Node temp = head;
             head = temp.next;
             return temp.data;
         }
-        return 0;
     }
 
-    public int get_head() {
-        if (head != null) {
-            return head.data;
+    public int get_head() throws NullPointerException {
+        if (this.isEmpty()) {
+            throw new NullPointerException();
         }
-        return 0;
-    }
-
-    public int get_head() {
-        if (head != null) {
-            return head.data;
-        }
-        return 0;
+        return head.data;
     }
 
     public ArrayList<Integer> toArrayList() {
 
         ArrayList<Integer> list = new ArrayList<Integer>();
-        if (head != null) {
+        if (!this.isEmpty()) {
             Node temp = head;
             while (temp != null) {
                 list.add(temp.data);
