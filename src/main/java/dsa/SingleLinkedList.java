@@ -46,14 +46,15 @@ public class SingleLinkedList {
             throw new NullPointerException();
         }
 
-        Node temp = this.head;
+        Node temp = this.head, prev = null;
         while (temp.next != null) {
+            prev = temp;
             temp = temp.next;
         }
-        int tempVal = temp.data;
-        temp.next = null;
-        return tempVal;
-
+        if (prev != null) {
+            prev.next = null;
+        }
+        return temp.data;
     }
 
     public int pop_front() throws NullPointerException {
