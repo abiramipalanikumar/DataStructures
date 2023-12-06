@@ -1,6 +1,7 @@
 package dsa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -63,6 +64,10 @@ public class DoublyLinkedListTest {
         for (int i = 0; i < 10; i++) {
             assertEquals(i, list.pop_back());
         }
+
+        assertThrows(NullPointerException.class, () -> {
+            list.pop_back();
+        });
     }
 
     @Test
@@ -75,11 +80,18 @@ public class DoublyLinkedListTest {
         for (int i = 0; i < 10; i++) {
             assertEquals(i, list.pop_front());
         }
+        assertThrows(NullPointerException.class, () -> {
+            list.pop_front();
+        });
     }
 
     @Test
     public void testListget_head() {
         DoublyLinkedList list = new DoublyLinkedList();
+
+        assertThrows(NullPointerException.class, () -> {
+            list.get_head();
+        });
 
         for (int i = 0; i < 10; i++) {
             list.push_back(i);

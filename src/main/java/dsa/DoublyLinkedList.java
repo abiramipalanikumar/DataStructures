@@ -1,7 +1,5 @@
 package dsa;
 
-import javax.naming.NameAlreadyBoundException;
-
 class Node {
     int data;
     Node next;
@@ -32,7 +30,7 @@ public class DoublyLinkedList {
 
     public void push_back(int data) {
         Node newNode = new Node(data);
-        if (head == null) {
+        if (this.isEmpty()) {
             head = newNode;
         } else {
             Node temp = head;
@@ -45,7 +43,7 @@ public class DoublyLinkedList {
     }
 
     public int pop_back() throws NullPointerException {
-        if (head == null) {
+        if (this.isEmpty()) {
             throw new NullPointerException();
         }
         Node temp = head, prev = null;
@@ -60,10 +58,10 @@ public class DoublyLinkedList {
     }
 
     public int pop_front() throws NullPointerException {
-        if (head == null) {
+        if (this.isEmpty()) {
             throw new NullPointerException();
         }
-        Node temp = head;
+        Node temp = this.head;
         this.head = this.head.next;
         if (this.head != null)
             this.head.prev = null;
@@ -71,7 +69,7 @@ public class DoublyLinkedList {
     }
 
     public int get_head() throws NullPointerException {
-        if (head == null) {
+        if (this.isEmpty()) {
             throw new NullPointerException();
         }
         return head.data;
