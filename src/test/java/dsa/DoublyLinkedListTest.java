@@ -19,7 +19,7 @@ public class DoublyLinkedListTest {
         DoublyLinkedList list = new DoublyLinkedList();
 
         for (int i = 0; i < 10; i++) {
-            list.push_back(i);
+            list.push_front(i);
         }
         assertEquals(10, list.length());
     }
@@ -85,7 +85,6 @@ public class DoublyLinkedListTest {
             list.push_back(i);
         }
         for (int i = 0; i < 10; i++) {
-
             assertEquals(i, list.get_head());
             list.pop_front();
         }
