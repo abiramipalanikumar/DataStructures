@@ -21,13 +21,25 @@ public class DoublyLinkedList {
     }
 
     public void push_front(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        if (this.head != null)
+            this.head.prev = newNode;
+        this.head = newNode;
     }
 
     public void push_back(int data) {
-    }
-
-    public int pop_front() {
-        return 0;
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+            newNode.prev = temp;
+        }
     }
 
     public int pop_back() {
@@ -43,14 +55,26 @@ public class DoublyLinkedList {
     }
 
     public ArrayList<Integer> toArrayList() {
-        return new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        Node temp = head;
+        if (temp != null) {
+            list.add(temp.data);
+            temp = temp.next;
+        }
+        return list;
     }
 
     public int length() {
-        return 0;
+        Node temp = head;
+        int length = 0;
+        if (temp != null) {
+            length++;
+            temp = temp.next;
+        }
+        return length;
     }
 
     public boolean isEmpty() {
-        return true;
+        return this.head == null;
     }
 }
