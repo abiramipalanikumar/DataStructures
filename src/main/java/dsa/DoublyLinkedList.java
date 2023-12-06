@@ -1,5 +1,7 @@
 package dsa;
 
+import javax.naming.NameAlreadyBoundException;
+
 class Node {
     int data;
     Node next;
@@ -42,20 +44,37 @@ public class DoublyLinkedList {
         }
     }
 
-    public int pop_back() {
-        return 0;
+    public int pop_back() throws NullPointerException {
+        if (head == null) {
+            throw new NullPointerException();
+        }
+        Node temp = head, prev = null;
+        while (temp.next != null) {
+            prev = temp;
+            temp = temp.next;
+        }
+        if (prev != null)
+            prev.next = null;
+
+        return temp.data;
     }
 
-    public int pop_front() {
-        return 0;
+    public int pop_front() throws NullPointerException {
+        if (head == null) {
+            throw new NullPointerException();
+        }
+        Node temp = head;
+        this.head = this.head.next;
+        if (this.head != null)
+            this.head.prev = null;
+        return temp.data;
     }
 
-    public int get_head() {
-        return 0;
-    }
-
-    public int get_tail() {
-        return 0;
+    public int get_head() throws NullPointerException {
+        if (head == null) {
+            throw new NullPointerException();
+        }
+        return head.data;
     }
 
     public ArrayList<Integer> toArrayList() {
