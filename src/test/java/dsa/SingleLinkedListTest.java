@@ -8,7 +8,7 @@ public class SingleLinkedListTest {
 
     @Test
     public void testEmptyList() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
         assertEquals(true, list.isEmpty());
         list.push_front(10);
         assertEquals(false, list.isEmpty());
@@ -16,7 +16,7 @@ public class SingleLinkedListTest {
 
     @Test
     public void testListSize() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_back(i);
@@ -26,7 +26,7 @@ public class SingleLinkedListTest {
 
     @Test
     public void testListPush_back() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
         for (int i = 0; i < 10; i++) {
             list.push_back(i);
         }
@@ -40,7 +40,7 @@ public class SingleLinkedListTest {
 
     @Test
     public void testListPush_front() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
         for (int i = 10; i > 0; i--) {
             list.push_front(i);
         }
@@ -54,39 +54,39 @@ public class SingleLinkedListTest {
 
     @Test
     public void testListPop_back() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_front(i);
         }
 
         for (int i = 0; i < 10; i++) {
-            assertEquals(i, list.pop_back());
+            assertEquals(Integer.valueOf(i), list.pop_back());
         }
     }
 
     @Test
     public void testListPop_front() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_back(i);
         }
         for (int i = 0; i < 10; i++) {
-            assertEquals(i, list.pop_front());
+            assertEquals(Integer.valueOf(i), list.pop_front());
         }
     }
 
     @Test
     public void testListget_head() {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList<Integer> list = new SingleLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_back(i);
         }
         for (int i = 0; i < 10; i++) {
 
-            assertEquals(i, list.get_head());
+            assertEquals(Integer.valueOf(i), list.get_head());
             list.pop_front();
         }
 

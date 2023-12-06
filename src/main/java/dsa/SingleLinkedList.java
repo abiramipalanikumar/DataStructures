@@ -1,52 +1,52 @@
 package dsa;
 
-class Node {
-    int data;
-    Node next;
+class Node<T> {
+    T data;
+    Node<T> next;
 
-    Node(int data) {
+    Node(T data) {
         this.data = data;
         this.next = null;
     }
 
-    public void setNext(Node node) {
+    public void setNext(Node<T> node) {
         this.next = node;
     }
 }
 
-public class SingleLinkedList {
+public class SingleLinkedList<T> {
 
-    Node head;
+    Node<T> head;
 
     SingleLinkedList() {
         head = null;
     }
 
-    public void push_back(int data) {
+    public void push_back(T data) {
         if (this.isEmpty()) {
-            head = new Node(data);
+            head = new Node<T>(data);
         } else {
-            Node tempNode = head;
+            Node<T> tempNode = head;
             while (tempNode != null && tempNode.next != null) {
                 tempNode = tempNode.next;
             }
-            Node newNode = new Node(data);
+            Node<T> newNode = new Node<T>(data);
             tempNode.next = newNode;
         }
     }
 
-    public void push_front(int data) {
-        Node newNode = new Node(data);
+    public void push_front(T data) {
+        Node<T> newNode = new Node<T>(data);
         newNode.next = head;
         head = newNode;
     }
 
-    public int pop_back() throws NullPointerException {
+    public T pop_back() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         }
 
-        Node temp = this.head, prev = null;
+        Node<T> temp = this.head, prev = null;
         while (temp.next != null) {
             prev = temp;
             temp = temp.next;
@@ -57,26 +57,26 @@ public class SingleLinkedList {
         return temp.data;
     }
 
-    public int pop_front() throws NullPointerException {
+    public T pop_front() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         } else {
-            Node temp = head;
+            Node<T> temp = head;
             head = temp.next;
             return temp.data;
         }
     }
 
-    public int get_head() throws NullPointerException {
+    public T get_head() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         }
         return head.data;
     }
 
-    public ArrayList<Integer> toArrayList() {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        Node temp = this.head;
+    public ArrayList<T> toArrayList() {
+        ArrayList<T> list = new ArrayList<T>();
+        Node<T> temp = this.head;
         while (temp != null) {
             list.add(temp.data);
             temp = temp.next;
@@ -85,7 +85,7 @@ public class SingleLinkedList {
     }
 
     public int length() {
-        Node tempNode = this.head;
+        Node<T> tempNode = this.head;
         int length = 0;
         while (tempNode != null) {
             length++;
