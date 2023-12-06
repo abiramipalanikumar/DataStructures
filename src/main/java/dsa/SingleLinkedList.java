@@ -1,20 +1,16 @@
 package dsa;
 
-class Node<T> {
-    T data;
-    Node<T> next;
-
-    Node(T data) {
-        this.data = data;
-        this.next = null;
-    }
-
-    public void setNext(Node<T> node) {
-        this.next = node;
-    }
-}
-
 public class SingleLinkedList<T> {
+
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+
+        Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
 
     Node<T> head;
 
