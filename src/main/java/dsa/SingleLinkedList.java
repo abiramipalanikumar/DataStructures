@@ -53,6 +53,8 @@ public class SingleLinkedList<T> {
         }
         if (prev != null) {
             prev.next = null;
+        } else {
+            this.head = null;
         }
         return temp.data;
     }

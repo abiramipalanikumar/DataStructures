@@ -54,9 +54,11 @@ public class DoublyLinkedList {
             prev = temp;
             temp = temp.next;
         }
-        if (prev != null)
+        if (prev != null) {
             prev.next = null;
-
+        } else {
+            this.head = null;
+        }
         return temp.data;
     }
 
