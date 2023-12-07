@@ -19,6 +19,10 @@ public class Stack<T> {
         return stack.isEmpty();
     }
 
+    public int size() {
+        return stack.length();
+    }
+
     public T top() throws NullPointerException {
         return stack.get_head();
     }
