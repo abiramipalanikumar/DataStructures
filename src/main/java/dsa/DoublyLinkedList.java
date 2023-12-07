@@ -1,83 +1,93 @@
 package dsa;
 
-class Node {
-    int data;
-    Node next;
-    Node prev;
+public class DoublyLinkedList<T> {
 
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-        this.prev = null;
+    class Node<Y> {
+        T data;
+        Node<T> next;
+        Node<T> prev;
+
+        Node(T data) {
+            this.data = data;
+            this.next = null;
+            this.prev = null;
+        }
     }
-}
 
-public class DoublyLinkedList {
+    Node<T> head;
+    Node<T> tail;
 
-    Node head;
+    int length = 0;
 
     public DoublyLinkedList() {
         this.head = null;
+        this.tail = null;
     }
 
-    public void push_front(int data) {
-        Node newNode = new Node(data);
+    public void push_front(T data) {
+        Node<T> newNode = new Node<T>(data);
         newNode.next = this.head;
-        if (!this.isEmpty())
+        if (!this.isEmpty()) {
             this.head.prev = newNode;
-        this.head = newNode;
-    }
-
-    public void push_back(int data) {
-        Node newNode = new Node(data);
-        if (this.isEmpty()) {
-            head = newNode;
         } else {
-            Node temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-            temp.next = newNode;
-            newNode.prev = temp;
+            this.tail = newNode;
         }
+        this.head = newNode;
+        this.length++;
     }
 
-    public int pop_back() throws NullPointerException {
+    public void push_back(T data) {
+        Node<T> newNode = new Node<T>(data);
+        if (this.isEmpty()) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.prev = this.tail;
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.length++;
+    }
+
+    public T pop_back() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         }
-        Node temp = head, prev = null;
-        while (temp.next != null) {
-            prev = temp;
-            temp = temp.next;
-        }
-        if (prev != null)
-            prev.next = null;
 
+        Node<T> prev = tail.prev;
+        Node<T> temp = tail;
+        if (prev == null) {
+            this.head = null;
+        } else {
+            prev.next = null;
+        }
+        this.tail = prev;
+        this.length--;
         return temp.data;
     }
 
-    public int pop_front() throws NullPointerException {
+    public T pop_front() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         }
-        Node temp = this.head;
+        Node<T> temp = this.head;
         this.head = this.head.next;
         if (this.head != null)
             this.head.prev = null;
+        this.length--;
         return temp.data;
     }
 
-    public int get_head() throws NullPointerException {
+    public T get_head() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         }
         return head.data;
     }
 
-    public ArrayList<Integer> toArrayList() {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        Node temp = head;
+    public ArrayList<T> toArrayList() {
+        ArrayList<T> list = new ArrayList<T>();
+        Node<T> temp = head;
         while (temp != null) {
             list.add(temp.data);
             temp = temp.next;
@@ -86,13 +96,7 @@ public class DoublyLinkedList {
     }
 
     public int length() {
-        Node temp = this.head;
-        int length = 0;
-        while (temp != null) {
-            length++;
-            temp = temp.next;
-        }
-        return length;
+        return this.length;
     }
 
     public boolean isEmpty() {

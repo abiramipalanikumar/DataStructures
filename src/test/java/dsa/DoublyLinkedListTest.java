@@ -9,7 +9,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testEmptyList() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
         assertEquals(true, list.isEmpty());
         list.push_front(10);
         assertEquals(false, list.isEmpty());
@@ -17,7 +17,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testListSize() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_front(i);
@@ -27,7 +27,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testListPush_back() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
         for (int i = 0; i < 10; i++) {
             list.push_back(i);
         }
@@ -41,7 +41,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testListPush_front() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
         for (int i = 10; i > 0; i--) {
             list.push_front(i);
         }
@@ -55,7 +55,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testListPop_back() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_front(i);
@@ -72,7 +72,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testListPop_front() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
 
         for (int i = 0; i < 10; i++) {
             list.push_back(i);
@@ -87,7 +87,7 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testListget_head() {
-        DoublyLinkedList list = new DoublyLinkedList();
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
 
         assertThrows(NullPointerException.class, () -> {
             list.get_head();
