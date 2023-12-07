@@ -1,44 +1,47 @@
 package dsa;
 
-class Node {
-    int data;
-    Node next;
-    Node prev;
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-        this.prev = null;
-    }
-}
-
 public class DoublyLinkedList {
+    class Node {
+        int data;
+        Node next;
+        Node prev;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+            this.prev = null;
+        }
+    }
 
     Node head;
+    Node tail;
 
     public DoublyLinkedList() {
         this.head = null;
+        this.tail = null;
     }
 
     public void push_front(int data) {
         Node newNode = new Node(data);
         newNode.next = this.head;
-        if (!this.isEmpty())
+        if (!this.isEmpty()) {
             this.head.prev = newNode;
+        } else {
+            this.tail = newNode;
+        }
         this.head = newNode;
+
     }
 
     public void push_back(int data) {
         Node newNode = new Node(data);
         if (this.isEmpty()) {
-            head = newNode;
+            this.head = newNode;
+            this.tail = newNode;
         } else {
-            Node temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-            temp.next = newNode;
-            newNode.prev = temp;
+            newNode.prev = this.tail;
+            this.tail.next = newNode;
+            this.tail = newNode;
         }
     }
 
