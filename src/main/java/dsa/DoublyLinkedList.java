@@ -15,6 +15,7 @@ public class DoublyLinkedList {
 
     Node head;
     Node tail;
+    int length = 0;
 
     public DoublyLinkedList() {
         this.head = null;
@@ -30,7 +31,7 @@ public class DoublyLinkedList {
             this.tail = newNode;
         }
         this.head = newNode;
-
+        this.length++;
     }
 
     public void push_back(int data) {
@@ -43,22 +44,23 @@ public class DoublyLinkedList {
             this.tail.next = newNode;
             this.tail = newNode;
         }
+        this.length++;
     }
 
     public int pop_back() throws NullPointerException {
         if (this.isEmpty()) {
             throw new NullPointerException();
         }
-        Node temp = head, prev = null;
-        while (temp.next != null) {
-            prev = temp;
-            temp = temp.next;
-        }
-        if (prev != null) {
-            prev.next = null;
-        } else {
+
+        Node prev = tail.prev;
+        Node temp = tail;
+        if (prev == null) {
             this.head = null;
+        } else {
+            prev.next = null;
         }
+        this.tail = prev;
+        this.length--;
         return temp.data;
     }
 
@@ -70,6 +72,7 @@ public class DoublyLinkedList {
         this.head = this.head.next;
         if (this.head != null)
             this.head.prev = null;
+        this.length--;
         return temp.data;
     }
 
@@ -91,13 +94,7 @@ public class DoublyLinkedList {
     }
 
     public int length() {
-        Node temp = this.head;
-        int length = 0;
-        while (temp != null) {
-            length++;
-            temp = temp.next;
-        }
-        return length;
+        return this.length;
     }
 
     public boolean isEmpty() {
